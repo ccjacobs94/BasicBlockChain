@@ -16,8 +16,17 @@ public class ChainController {
      * @param transaction The transaction to be added
      */
     @RequestMapping(value = "/addTransaction", method = RequestMethod.POST)
-    public List<Block> addTransaction(@RequestBody() String[] transaction){
-        blockChain.addTransaction(transaction);
+    public Boolean addTransaction(@RequestBody() String[] transaction){
+        try {
+            blockChain.addTransaction(transaction);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @RequestMapping(value = "/ledger", method = RequestMethod.GET)
+    public List<Block> getLedger(){
         return blockChain.getBlockChain();
     }
 
