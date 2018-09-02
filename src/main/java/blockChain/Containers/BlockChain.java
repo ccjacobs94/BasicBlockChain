@@ -3,7 +3,8 @@ package blockChain.Containers;
 import java.util.LinkedList;
 
 public class BlockChain {
-    private LinkedList<Block> blockChain;
+
+    private LinkedList<Block> blockChain; //The block chain being worked on
 
     /**
      * creates a new BlockChain object with the initial transaction specified
@@ -20,7 +21,7 @@ public class BlockChain {
      */
     public BlockChain(){
         blockChain = new LinkedList<>();
-        String[] initial_transaction = {"Chris started the chanin"};
+        String[] initial_transaction = {"Chris started the chain"};
         byte[] initial_hash = {'1'};
         blockChain.add(new Block(initial_hash, initial_transaction));
     }
@@ -35,7 +36,7 @@ public class BlockChain {
 
     /**
      * adds a new block to the chain
-     * @param newBlock
+     * @param newBlock The new block object to be added
      */
     public void addBlock(Block newBlock){
         blockChain.add(newBlock);
@@ -43,7 +44,7 @@ public class BlockChain {
 
     /**
      * adds a transaction to the blockChain
-     * @param transaction
+     * @param transaction The transactions of the new block
      */
     public void addTransaction(String[] transaction){
         byte[] lastHash = blockChain.getLast().getBlockHash();
