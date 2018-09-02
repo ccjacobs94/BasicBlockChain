@@ -11,7 +11,8 @@ public class BlockChain {
      */
     public BlockChain(String[] initialTransaction){
         blockChain = new LinkedList<>();
-        blockChain.add(new Block(0, initialTransaction));
+        byte[] initial_hash = {'1'};
+        blockChain.add(new Block(initial_hash, initialTransaction));
     }
 
     /**
@@ -20,7 +21,8 @@ public class BlockChain {
     public BlockChain(){
         blockChain = new LinkedList<>();
         String[] initial_transaction = {"Chris started the chanin"};
-        blockChain.add(new Block(0, initial_transaction));
+        byte[] initial_hash = {'1'};
+        blockChain.add(new Block(initial_hash, initial_transaction));
     }
 
     /**
@@ -44,7 +46,7 @@ public class BlockChain {
      * @param transaction
      */
     public void addTransaction(String[] transaction){
-        int lastHash = blockChain.getLast().getBlockHash();
+        byte[] lastHash = blockChain.getLast().getBlockHash();
         Block newBlock = new Block(lastHash, transaction);
 
         addBlock(newBlock);

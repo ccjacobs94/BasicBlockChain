@@ -1,22 +1,25 @@
 package blockChain.Containers;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class Block {
-    private int prevHash;
+    private byte[] prevHash;
     private String[] transactions;
 
-    private int blockHash;
+    private byte[] blockHash;
 
-    public Block(int prevHash, String[] transactions){
+    public Block(byte[] prevHash, String[] transactions){
         this.prevHash = prevHash;
         this.transactions = transactions;
 
-        Object[] contents = {Arrays.hashCode(transactions), prevHash};
-        this.blockHash = Arrays.hashCode(contents);
+        Object[] contents = {hash(transactions.toString()), prevHash};
+        this.blockHash = hash(contents.toString());
     }
 
-    public int getPrevHash() {
+    public byte[] getPrevHash() {
         return prevHash;
     }
 
@@ -24,8 +27,20 @@ public class Block {
         return transactions;
     }
 
-    public int getBlockHash() {
+    public byte[] getBlockHash() {
         return this.blockHash;
 
+    }
+
+    private byte[] hash(String input){
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+            byte[] out = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+            return out;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
