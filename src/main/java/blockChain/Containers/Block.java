@@ -7,8 +7,7 @@ import java.security.NoSuchAlgorithmException;
 public class Block {
     private byte[] prevHash;  //The hash of the previous block in the chain
     private String[] transactions;  //The transactions of this block
-    private String timeStamp;
-
+    private String timeStamp;  //The time the Block was created in milliseconds
     private byte[] blockHash;  //The hash of this current block
 
     /**
