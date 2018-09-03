@@ -49,7 +49,7 @@ public class Block {
      * @return The SHA-256 byte array
      */
     private byte[] hash(String input){
-        MessageDigest digest = null;
+        MessageDigest digest;
         try {
             digest = MessageDigest.getInstance("SHA-256");
             byte[] out = digest.digest(input.getBytes(StandardCharsets.UTF_8));
