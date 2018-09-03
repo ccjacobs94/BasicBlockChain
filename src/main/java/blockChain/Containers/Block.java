@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 public class Block {
     private byte[] prevHash;  //The hash of the previous block in the chain
     private String[] transactions;  //The transactions of this block
+    private String timeStamp;
 
     private byte[] blockHash;  //The hash of this current block
 
@@ -18,8 +19,9 @@ public class Block {
     public Block(byte[] prevHash, String[] transactions){
         this.prevHash = prevHash;
         this.transactions = transactions;
+        this.timeStamp = String.valueOf(System.currentTimeMillis());
 
-        Object[] contents = {hash(transactions.toString()), prevHash};
+        Object[] contents = {hash(transactions.toString() + timeStamp), prevHash};
         this.blockHash = hash(contents.toString());
     }
 
@@ -35,6 +37,10 @@ public class Block {
     public byte[] getBlockHash() {
         return this.blockHash;
 
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
     }
 
     /**
