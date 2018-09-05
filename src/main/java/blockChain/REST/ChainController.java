@@ -31,8 +31,8 @@ public class ChainController {
     }
 
     @RequestMapping(value = "/IP", method = RequestMethod.GET)
-    public String getIPAddress(){
-        return null; //todo add method to get IP
+    public String getIPAddresses(){
+        return "One Moment Please";
     }
 
 }
