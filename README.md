@@ -12,4 +12,4 @@ API should start on port 8080
 
 **How to Help**
 
-We are making new stories all the time on our trello (https://trello.com/b/A379FAnW/yu-gi-oh-blockchain)
+We are making new stories all the time on our trello (https://trello.com/b/A379FAnW/simple-blockchain)
