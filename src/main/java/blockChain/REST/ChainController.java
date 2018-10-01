@@ -30,4 +30,9 @@ public class ChainController {
         return blockChain.getBlockChain();
     }
 
+    @RequestMapping(value = "/IP", method = RequestMethod.GET)
+    public String getIPAddresses(){
+        return "One Moment Please";
+    }
+
 }
